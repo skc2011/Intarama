@@ -18,12 +18,10 @@ class ImageStore {
                 print("error while writing - \(error)")
             }
         }
-        
     }
     
-    
     func imageForKey(key: String) -> UIImage? {
-        if let existingImage = cache.object(forKey: key as NSString){//} as? UIImage {
+        if let existingImage = cache.object(forKey: key as NSString){
             return existingImage
         }
         let imageURL = imageURLForKey(key: key)
@@ -33,7 +31,6 @@ class ImageStore {
         cache.setObject(imageFromDisk, forKey: key as NSString)
         return imageFromDisk
     }
-    
     
     func deleteImageForKey(key: String) {
         cache.removeObject(forKey: key as NSString)
@@ -45,14 +42,11 @@ class ImageStore {
         catch let deleteError {
             print("Error removing the image from disk: \(deleteError)")
         }
-        
     }
-    
     
     func imageURLForKey(key: String) -> NSURL {
         let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = documentsDirectories.first!
-        
         return documentDirectory.appendingPathComponent(key) as NSURL
     }
 }

@@ -63,9 +63,7 @@ struct FlickrAPI {
     
     static var interestingPhotosURL: URL {
         let url = flickrURL(method: .interestingPhotos, parameters: [:/*"extras": "url_h,date_taken"*/])
-        //        print(url)
         return url
-        
     }
     
     
@@ -83,12 +81,12 @@ struct FlickrAPI {
                 let id = item["id"] as! String
                 let index = id.index(of: "_")!
                 let newId = String(id[..<index])
-
                 let caption = item["caption"] as! [String:Any]
                 let text = caption["text"] as! String
                 let dateTaken = caption["created_time"] as! String
                 let images = item["images"] as! [String:Any]
                 var photoBundle = images["standard_resolution"] as! [String:Any]
+                
                 photoBundle["id"] = newId
                 photoBundle["datetaken"] = dateTaken
                 photoBundle["text"] = text

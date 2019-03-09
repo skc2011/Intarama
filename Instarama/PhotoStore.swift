@@ -28,7 +28,6 @@ enum TagsResult {
     case failure(Error)
 }
 
-
 class PhotoStore {
     
     let imageStore = ImageStore()
@@ -74,7 +73,6 @@ class PhotoStore {
                     completion(result)
                 }
             }
-//            print("fetchInterestingPhotos - \(result)")
         }
         task.resume()
     }
@@ -102,7 +100,8 @@ class PhotoStore {
             }
             OperationQueue.main.addOperation {
                 completion(result)
-            }        }
+            }
+        }
         task.resume()
     }
     
@@ -163,5 +162,4 @@ class PhotoStore {
             }
         }
     }
-    
 }

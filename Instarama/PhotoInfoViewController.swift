@@ -8,13 +8,10 @@
 
 import UIKit
 class PhotoInfoViewController: UIViewController {
+    
     @IBOutlet var imageView: UIImageView!
 
-    var photo: Photo! {
-        didSet {
-//            navigationItem.title = photo.title
-        }
-    }
+    var photo: Photo! 
     var store: PhotoStore!
     
     override func viewDidLoad() {
